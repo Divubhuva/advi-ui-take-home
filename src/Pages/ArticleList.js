@@ -1,187 +1,100 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
 import ArticleComponent from "../Components/Article";
-import "./ArticleList.css"; // Import the CSS file for the App component
+import "./ArticleList.css";
+import Filter from '../Components/Filter';
 
-const ArticleList = () => {
-  const newsItems = [
-    {
-      id: 1,
-      imageSrc: "news1.jpg",
-      title: "Breaking News 1",
-      description: "This is the description for Breaking News 1",
-    },
-    {
-      id: 2,
-      imageSrc: "news2.jpg",
-      title: "Breaking News 2",
-      description: "This is the description for Breaking News 2",
-    },
-    {
-      id: 3,
-      imageSrc: "news1.jpg",
-      title: "Breaking News 1",
-      description: "This is the description for Breaking News 1",
-    },
-    {
-      id: 4,
-      imageSrc: "news2.jpg",
-      title: "Breaking News 2",
-      description: "This is the description for Breaking News 2",
-    },
-    {
-      id: 5,
-      imageSrc: "news1.jpg",
-      title: "Breaking News 1",
-      description: "This is the description for Breaking News 1",
-    },
-    {
-      id: 6,
-      imageSrc: "news2.jpg",
-      title: "Breaking News 2",
-      description: "This is the description for Breaking News 2",
-    },
-    {
-      id: 7,
-      imageSrc: "news1.jpg",
-      title: "Breaking News 1",
-      description: "This is the description for Breaking News 1",
-    },
-    {
-      id: 8,
-      imageSrc: "news2.jpg",
-      title: "Breaking News 2",
-      description: "This is the description for Breaking News 2",
-    },
-    {
-      id: 9,
-      imageSrc: "news1.jpg",
-      title: "Breaking News 1",
-      description: "This is the description for Breaking News 1",
-    },
-    {
-      id: 10,
-      imageSrc: "news2.jpg",
-      title: "Breaking News 2",
-      description: "This is the description for Breaking News 2",
-    },
-    {
-      id: 11,
-      imageSrc: "news1.jpg",
-      title: "Breaking News 1",
-      description: "This is the description for Breaking News 1",
-    },
-    {
-      id: 12,
-      imageSrc: "news2.jpg",
-      title: "Breaking News 2",
-      description: "This is the description for Breaking News 2",
-    },
-    {
-      id: 13,
-      imageSrc: "news1.jpg",
-      title: "Breaking News 1",
-      description: "This is the description for Breaking News 1",
-    },
-    {
-      id: 14,
-      imageSrc: "news2.jpg",
-      title: "Breaking News 2",
-      description: "This is the description for Breaking News 2",
-    },
-    {
-      id: 15,
-      imageSrc: "news1.jpg",
-      title: "Breaking News 1",
-      description: "This is the description for Breaking News 1",
-    },
-    {
-      id: 16,
-      imageSrc: "news2.jpg",
-      title: "Breaking News 2",
-      description: "This is the description for Breaking News 2",
-    },
-    {
-      id: 17,
-      imageSrc: "news1.jpg",
-      title: "Breaking News 1",
-      description: "This is the description for Breaking News 1",
-    },
-    {
-      id: 18,
-      imageSrc: "news2.jpg",
-      title: "Breaking News 2",
-      description: "This is the description for Breaking News 2",
-    },
-    {
-      id: 19,
-      imageSrc: "news1.jpg",
-      title: "Breaking News 1",
-      description: "This is the description for Breaking News 1",
-    },
-    {
-      id: 20,
-      imageSrc: "news2.jpg",
-      title: "Breaking News 2",
-      description: "This is the description for Breaking News 2",
-    },
-    {
-      id: 21,
-      imageSrc: "news1.jpg",
-      title: "Breaking News 1",
-      description: "This is the description for Breaking News 1",
-    },
-    {
-      id: 22,
-      imageSrc: "news2.jpg",
-      title: "Breaking News 2",
-      description: "This is the description for Breaking News 2",
-    },
-    // Add more news items as needed
-  ];
+const ArticleList = ({url}) => {
 
-  const [articles, setArticles] = useState(newsItems);
+  const [articles, setArticles] = useState(null);
+  const [filteredArticles, setFilteredArticles] = useState(null); // New state for filtered articles
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const articlesPerPage = 9;
+  const articlesPerPage = 10;
 
   const indexOfLastArticle = currentPage * articlesPerPage;
   const indexOfFirstArticle = indexOfLastArticle - articlesPerPage;
-  const currentArticles = articles.slice(
-    indexOfFirstArticle,
-    indexOfLastArticle
-  );
+  const currentArticles = filteredArticles ? filteredArticles.slice(indexOfFirstArticle, indexOfLastArticle) 
+                                           : articles 
+                                                    ? articles.slice(indexOfFirstArticle, indexOfLastArticle) 
+                                                    : [];
 
-  // Change the current page
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
+  const handleFilterByDate = (date) => {
+    if (articles) {
+      const filteredArticles = articles.filter((article) => {
+        const articleDate = new Date(article.publishedAt);
+        const filterDate = new Date(date);
+        return articleDate.getDate() === filterDate.getDate() &&
+          articleDate.getMonth() === filterDate.getMonth() &&
+          articleDate.getFullYear() === filterDate.getFullYear();
+      });
+      setFilteredArticles(filteredArticles); // Update filteredArticles state
+      setCurrentPage(1);
+    }
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        const response = await axios.get(url);
+        setArticles(response.data.articles);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
+    console.log("use effect call");
+  }, [url]);
+
   return (
     <div className="a-container">
       <h1>Articles</h1>
-      <div className="article-grid">
-        {currentArticles.map((article, index) => (
-          <ArticleComponent
-            key={index}
-            urlToImage={article.urlToImage}
-            title={article.title}
-            description={article.description}
-          />
-        ))}
-      </div>
-      <div className="pagination">
-        {Array.from(
-          { length: Math.ceil(articles.length / articlesPerPage) },
-          (_, i) => i + 1
-        ).map((pageNumber) => (
-          <button
-            key={pageNumber}
-            onClick={() => handlePageChange(pageNumber)}
-            className={pageNumber === currentPage ? "active" : ""}
-          >
-            {pageNumber}
-          </button>
-        ))}
-      </div>
+      {loading && <div>Loading...</div>}
+      {error && <div>Error: {error.message}</div>}
+      {articles && (
+        <div>
+          
+          <div>
+            <Filter  
+              handleFilterByDate={handleFilterByDate}
+            />
+          </div>
+          
+          <div className="article-grid">
+            {currentArticles.map((article, index) => (
+              <ArticleComponent
+                key={index}
+                urlToImage={article.urlToImage}
+                title={article.title}
+                description={article.description} />
+            ))}
+          </div>
+
+          <div className="pagination">
+            {Array.from({ length: Math.ceil((filteredArticles || articles).length / articlesPerPage) }, (_, i) => i + 1).map(
+              (pageNumber) => (
+                <button
+                  key={pageNumber}
+                  onClick={() => handlePageChange(pageNumber)}
+                  className={pageNumber === currentPage ? "active" : ""}
+                >
+                  {pageNumber}
+                </button>
+              )
+            )}
+          </div>
+          
+        </div>
+      )}
     </div>
   );
 };

@@ -3,11 +3,13 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./Filter.css";
 
-const Filter = () => {
+const Filter = ({handleFilterByDate}) => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedPopularity, setSelectedPopularity] = useState("");
 
   const handleDateChange = (date) => {
+    
+    handleFilterByDate(date);
     setSelectedDate(date);
   };
 
