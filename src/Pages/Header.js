@@ -1,9 +1,8 @@
 import React from "react";
 import "./Header.css";
-
-import SearchBar from "../Components/SearchBar";
 import Logo from "../Components/Logo";
 import Category from "../Components/Category";
+import SearchBar from "../Components/SearchBar";
 
 const onSearch = (searchTerm) => {
   console.log("Searching for:", searchTerm);
@@ -11,12 +10,12 @@ const onSearch = (searchTerm) => {
 
 const Header = () => {
   return (
-    <header className="header">
+    <header className="header container">
       <div className="header-left">
         <Logo />
       </div>
 
-      <div className="header-left">
+      <div className="header-center d-flex justify-content-center">
         <Category />
       </div>
 

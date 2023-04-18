@@ -31,6 +31,7 @@
   @media (max-width: 768px) {
     .search-bar {
       margin-right: 0;
+      align-items: center;
     }
   
     .toggle-button {

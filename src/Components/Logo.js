@@ -5,7 +5,7 @@ import "./Logo.css";
 
 const Logo = () => {
   return (
-    <div className="logo-container">
+    <div className="logo-container d-flex align-items-center">
       <Link to="/">
         <img src={logo} alt="Logo" className="logo" />
       </Link>
