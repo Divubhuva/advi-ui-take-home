@@ -35,8 +35,11 @@ const ArticleList = ({url}) => {
           articleDate.getMonth() === filterDate.getMonth() &&
           articleDate.getFullYear() === filterDate.getFullYear();
       });
-      setFilteredArticles(filteredList);
-      setCurrentPage(1);
+
+      if (JSON.stringify(filteredArticles) !== JSON.stringify(filteredList)) {  
+        setFilteredArticles(filteredList); 
+        setCurrentPage(1);
+      }
     }
     else {
       
@@ -52,9 +55,9 @@ const ArticleList = ({url}) => {
       setLoading(true);
       setError(null);
       try {
-        const response = await axios.get(url);
+        const { data } = await axios.get(url);
         
-        setArticles(response.data.articles);
+        setArticles(data.articles);
         
       } catch (error) {
         setError(error);
