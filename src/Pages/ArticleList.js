@@ -25,6 +25,7 @@ const ArticleList = ({url}) => {
   };
 
   const handleFilterByDate = (date) => {
+    
     if (articles) {
       const filteredArticles = articles.filter((article) => {
         const articleDate = new Date(article.publishedAt);
@@ -45,6 +46,7 @@ const ArticleList = ({url}) => {
       try {
         const response = await axios.get(url);
         setArticles(response.data.articles);
+        
       } catch (error) {
         setError(error);
       } finally {
@@ -52,8 +54,7 @@ const ArticleList = ({url}) => {
       }
     };
     fetchData();
-    console.log("use effect call");
-  }, [url]);
+  },[url]);
 
   return (
     <div className="a-container">

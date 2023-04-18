@@ -1,9 +1,12 @@
 import React from "react";
-import "./Category.css";
+import { Link } from "react-router-dom"; // Import Link component from react-router-dom
+import "./Category.css"; // Import the CSS file for styling
 
 const Category = () => {
+
   return (
     <nav className="navbar">
+      <input type="checkbox" id="navbar-toggle" className="navbar-toggle" />
       <label htmlFor="navbar-toggle" className="navbar-toggle-label">
         <span></span>
         <span></span>
@@ -11,39 +14,25 @@ const Category = () => {
       </label>
       <ul className="navbar-menu">
         <li className="navbar-item">
-          <a href="#business" className="navbar-link">
-            Business
-          </a>
+          <Link to="/business" className="navbar-link">Business</Link>
         </li>
         <li className="navbar-item">
-          <a href="#entertainment" className="navbar-link">
-            Entertainment
-          </a>
+          <Link to="/entertainment" className="navbar-link">Entertainment</Link>
         </li>
         <li className="navbar-item">
-          <a href="#general" className="navbar-link">
-            General
-          </a>
+          <Link to="/general" className="navbar-link">General</Link>
         </li>
         <li className="navbar-item">
-          <a href="#health" className="navbar-link">
-            Health
-          </a>
+          <Link to="/health" className="navbar-link">Health</Link>
         </li>
         <li className="navbar-item">
-          <a href="#science" className="navbar-link">
-            Science
-          </a>
+          <Link to="/science" className="navbar-link">Science</Link>
         </li>
         <li className="navbar-item">
-          <a href="#sports" className="navbar-link">
-            Sports
-          </a>
+          <Link to="/sports" className="navbar-link">Sports</Link>
         </li>
         <li className="navbar-item">
-          <a href="#technology" className="navbar-link">
-            Technology
-          </a>
+          <Link to="/technology" className="navbar-link">Technology</Link>
         </li>
       </ul>
     </nav>
