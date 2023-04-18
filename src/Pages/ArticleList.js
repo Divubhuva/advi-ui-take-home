@@ -7,7 +7,7 @@ import Filter from '../Components/Filter';
 const ArticleList = ({url}) => {
 
   const [articles, setArticles] = useState(null);
-  const [filteredArticles, setFilteredArticles] = useState(null); // New state for filtered articles
+  const [filteredArticles, setFilteredArticles] = useState(null); 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
@@ -26,17 +26,25 @@ const ArticleList = ({url}) => {
 
   const handleFilterByDate = (date) => {
     
-    if (articles) {
-      const filteredArticles = articles.filter((article) => {
+    if (articles && articles.length > 0) {
+      if (date) {
+      const filteredList = articles.filter((article) => {
         const articleDate = new Date(article.publishedAt);
         const filterDate = new Date(date);
         return articleDate.getDate() === filterDate.getDate() &&
           articleDate.getMonth() === filterDate.getMonth() &&
           articleDate.getFullYear() === filterDate.getFullYear();
       });
-      setFilteredArticles(filteredArticles); // Update filteredArticles state
+      setFilteredArticles(filteredList);
       setCurrentPage(1);
     }
+    else {
+      
+      setFilteredArticles(articles);
+      
+    }
+    }
+    
   };
 
   useEffect(() => {
@@ -45,6 +53,7 @@ const ArticleList = ({url}) => {
       setError(null);
       try {
         const response = await axios.get(url);
+        
         setArticles(response.data.articles);
         
       } catch (error) {
@@ -56,7 +65,15 @@ const ArticleList = ({url}) => {
     fetchData();
   },[url]);
 
+  // If filter is applied then it should update here.
+  useEffect(() => {
+    if (articles && filteredArticles && filteredArticles.length > 0) {
+        handleFilterByDate(filteredArticles[0].publishedAt);  
+      }
+  },[articles]);
+
   return (
+    
     <div className="a-container">
       <h1>Articles</h1>
       {loading && <div>Loading...</div>}

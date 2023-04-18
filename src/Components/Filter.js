@@ -42,7 +42,7 @@ const Filter = ({handleFilterByDate}) => {
         </select>
       </div>
       <div className="reset-filter">
-        <button onClick={() => setSelectedDate(null)}>Reset</button>
+        <button onClick={() => handleDateChange(null)}>Reset</button>
       </div>
     </div>
   );
