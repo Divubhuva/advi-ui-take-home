@@ -7,7 +7,7 @@ import Filter from '../Components/Filter';
 const ArticleList = ({url}) => {
 
   const [articles, setArticles] = useState(null);
-  const [filteredArticles, setFilteredArticles] = useState(null); 
+  const [filteredArticles, setFilteredArticles] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
@@ -25,9 +25,9 @@ const ArticleList = ({url}) => {
   };
 
   const handleFilterByDate = (date) => {
-    
     if (articles && articles.length > 0) {
       if (date) {
+        
       const filteredList = articles.filter((article) => {
         const articleDate = new Date(article.publishedAt);
         const filterDate = new Date(date);
@@ -91,9 +91,7 @@ const ArticleList = ({url}) => {
             {currentArticles.map((article, index) => (
               <ArticleComponent
                 key={index}
-                urlToImage={article.urlToImage}
-                title={article.title}
-                description={article.description} />
+                article={article} />
             ))}
           </div>
 

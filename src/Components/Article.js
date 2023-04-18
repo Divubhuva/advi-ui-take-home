@@ -1,18 +1,17 @@
 import React from "react";
-import "./Article.css";
+import "./Article.css"
 
-const ArticleComponent = ({ urlToImage, title, description }) => {
+
+
+const ArticleComponent = ({ article }) => {
   return (
     <div className="article-container">
-      {urlToImage && (
-        <img
-          src={urlToImage}
-          alt="Article Thumbnail"
-          className="article-image"
-        />
+      {article.urlToImage && (
+        <img src={article.urlToImage} alt="Article Thumbnail" className="article-image" />
       )}
-      <h2 className="article-title">{title}</h2>
-      <p className="article-description">{description}</p>
+      <h2 className="article-title">{article.title}</h2>
+      <p className="article-description">{article.description}</p>
+      
     </div>
   );
 };
