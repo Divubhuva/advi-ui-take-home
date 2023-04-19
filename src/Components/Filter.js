@@ -18,22 +18,24 @@ const Filter = ({handleFilterByDate}) => {
   };
 
   return (
-    <div className="filter-container">
-      <div className="date-filter">
-        <h3>Date Filter</h3>
+    <div className="row filter-container">
+      <div className="col-md-12 date-filter">
+        <div>Date</div>
         <DatePicker
           selected={selectedDate}
           onChange={handleDateChange}
           placeholderText="Select a date"
-          className="calendar"
+          className="calendar form-control"
         />
       </div>
-      <div className="popularity-filter">
-        <h3>Popularity Filter</h3>
+      
+      <div className="col-md-12 popularity-filter">
+        <div>Popularity</div>
+        
         <select
           value={selectedPopularity}
           onChange={handlePopularityChange}
-          className="popularity-filter-options"
+          className="popularity-filter-options form-control"
         >
           <option value="">Select</option>
           <option value="high">High</option>
@@ -41,9 +43,11 @@ const Filter = ({handleFilterByDate}) => {
           <option value="low">Low</option>
         </select>
       </div>
-      <div className="reset-filter">
-        <button onClick={() => handleDateChange(null)}>Reset</button>
+      
+      <div className="col-md-12 reset-filter">
+        <button onClick={() => handleDateChange(null)} className="button">Reset</button>
       </div>
+    
     </div>
   );
 };
