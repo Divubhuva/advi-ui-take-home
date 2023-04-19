@@ -1,40 +1,43 @@
 .articleList-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  h1 {
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.article-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination .page-item .page-link {
+  background-color: #cfcfd1;
+  color: black; 
+  padding: 10px;
+  margin-right: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.pagination .page-item.active .page-link:focus {
+  background-color: #454546; 
+  color: white;
+  box-shadow: 0 0 0 4px #aeaeae;
+}
+
+@media (max-width: 768px) {
   .article-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   }
-  
-  .pagination {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-  }
-  
-  .pagination button {
-    padding: 10px;
-    margin-right: 5px;
-    background-color: #e6e6e6;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .pagination button.active {
-    background-color: #ccc;
-  }
-  
-  @media (max-width: 768px) {
-    .article-grid {
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    }
-  }
+}
