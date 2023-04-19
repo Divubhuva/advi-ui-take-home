@@ -12,6 +12,11 @@
   margin-bottom: 20px;
 }
 
+.calendar:focus {
+  box-shadow: 0 0 0 2px #aeaeae;
+  border-color: #ced4da;
+}
+
 .popularity-filter {
   flex-basis: 100%;
   margin-bottom: 20px;
@@ -25,6 +30,11 @@
   border-radius: 4px;
   background-color: #fff;
   font-size: 14px;
+}
+
+.popularity-filter-options:focus{
+  box-shadow: 0 0 0 2px #aeaeae;
+  border-color: #ced4da;
 }
 
 .reset-filter {
