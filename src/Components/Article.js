@@ -1,25 +1,34 @@
 import React, { useState } from "react";
-import "./Article.css"
-import Popup from "./Popup"; 
-
+import "./Article.css";
+import Popup from "./Popup";
 
 const ArticleComponent = ({ article }) => {
-
   const [showPopup, setShowPopup] = useState(false);
 
   const handlePopupToggle = () => {
     setShowPopup(!showPopup);
   };
 
-
   return (
-    <div className="article-container" onClick={handlePopupToggle}>
+    <div className="article-container card" onClick={handlePopupToggle}>
+      
       {article.urlToImage && (
-        <img src={article.urlToImage} alt="Article Thumbnail" className="article-image" />
+        <div className="article-image-container">
+          <img
+            src={article.urlToImage}
+            alt="Article Thumbnail"
+            className="card-img-top article-image"
+          />
+        </div>
       )}
-      <h2 className="article-title">{article.title}</h2>
-      <p className="article-description">{article.description}</p>
+
+      <div className="card-body">
+        <h2 className="card-title article-title">{article.title}</h2>
+        <p className="card-text article-description">{article.description}</p>
+      </div>
+
       {showPopup && <Popup article={article} onClose={handlePopupToggle} />}
+    
     </div>
   );
 };
