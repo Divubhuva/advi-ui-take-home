@@ -1,133 +1,127 @@
-
 .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #fff; 
-    opacity: 0.98;
-    z-index: 9999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #000000cc;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  max-width: 800px;
+  width: 90%;
+  padding: 20px;
+  border-radius: 5px;
+  z-index: 10000;
+  box-shadow: 0px 0px 15px #ffffff;
+  opacity: 1;
+}
+
+.close-button {
+  margin-top: -10px;
+  align-self: flex-end;
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.popup-article-image-container {
+  width: 400px;
+  max-height: 300px;
+  margin: auto;
+}
+
+.popup-article-image {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  background-color: #fff;
+}
+
+.popup-article-text-container {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.popup-article-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 10px;
+  background-color: #fff;
+}
+
+.popup-article-description,
+.popup-article-content {
+  font-size: 16px;
+  color: #777;
+  margin-top: 0;
+  margin-bottom: 10px;
+  background-color: #fff;
+}
+
+.popup-article-author,
+.popup-article-source {
+  font-size: 14px;
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 5px;
+  background-color: #fff;
+}
+
+.popup-article-published-at {
+  font-size: 14px;
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 10px;
+  background-color: #fff;
+}
+
+.read-more-link {
+  font-size: 14px;
+  color: #007bff;
+  text-decoration: none;
+  background-color: #fff;
+}
+
+.read-more-link:hover {
+  text-decoration: underline;
+  background-color: #fff;
+}
+
+@media (max-width: 480px) {
   .modal-content {
-    background-color: #fff;
-    max-width: 800px;
-    width: 90%; 
-    padding: 20px;
-    border-radius: 5px;
-    z-index: 10000;
-    box-shadow: 0px 0px 10px #000;
-    display: flex;
-    flex-direction: column; 
-    align-items: center;
+    width: 95%;
+    padding: 10px;
   }
-  
+
   .close-button {
     margin-top: -10px;
-    align-self: flex-end; 
-    background: none;
-    border: none;
-    font-size: 18px;
-    cursor: pointer;
-    background-color: #fff;
+    margin-right: -10px;
   }
-  
-  .article-image-container {
-    width: 100%; 
-    max-height: 300px;
+
+  .popup-article-title {
+    font-size: 20px;
   }
-  
-  .article-image {
-    width: 100%;
-    max-height: 300px;
-    object-fit: cover;
-    background-color: #fff;
-  }
-  
-  .article-text-container {
-    width: 100%; 
-    margin-top: 20px;
-  }
-  
-  .article-title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-top: 0;
-    margin-bottom: 10px;
-    background-color: #fff;
-  }
-  
-  .article-description {
-    font-size: 16px;
-    color: #777;
-    margin-top: 0;
-    margin-bottom: 10px;
-    background-color: #fff;
-  }
-  
-  .article-author {
+
+  .popup-article-description,
+  .popup-article-content {
     font-size: 14px;
-    color: #999;
-    margin-top: 0;
-    margin-bottom: 5px;
-    background-color: #fff;
   }
-  
-  .article-published-at {
-    font-size: 14px;
-    color: #999;
-    margin-top: 0;
-    margin-bottom: 10px;
-    background-color: #fff;
+
+  .popup-article-author,
+  .popup-article-source {
+    font-size: 12px;
   }
-  
-  .read-more-link {
-    font-size: 14px;
-    color: #007bff;
-    text-decoration: none;
-    background-color: #fff;
+
+  .popup-article-published-at {
+    font-size: 12px;
   }
-  
-  .read-more-link:hover {
-    text-decoration: underline;
-    background-color: #fff;
-  }
-  
-  @media (max-width: 480px) {
-    .modal-content {
-      width: 95%; 
-      padding: 10px; 
-    }
-    
-    .close-button {
-        margin-top: -10px;
-        margin-right: -10px; 
-      }
-    
-      .article-title {
-        font-size: 20px; 
-      }
-    
-      .article-description {
-        font-size: 14px;
-      }
-    
-      .article-author {
-        font-size: 12px; 
-      }
-    
-      .article-published-at {
-        font-size: 12px; 
-      }
-    }
-    
-    
-    
-    
-    
-    
-    
+}
