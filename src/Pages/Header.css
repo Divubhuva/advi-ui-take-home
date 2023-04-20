@@ -3,13 +3,18 @@
   justify-content: space-between;
   align-items: center;
   padding: 16px;
-  background-color: #f8f8f8;
+  background-color: #444;
 }
 
 .header-center {
   display: flex;
   justify-content: center;
   flex: 1;
+}
+
+.header-right-container {
+  display: flex;
+  justify-content: space-between;
 }
 
 @media (max-width: 768px) {
@@ -22,6 +27,25 @@
   .header-right {
     flex: 1;
     text-align: center;
-    margin-bottom: 8px;
+
   }
+
+
+  
+  .header-left {
+      flex-basis: 20%; 
+    }
+    .header-center{
+       flex-basis: 60%; 
+       justify-content: right;
+     
+    }
+    .header-right {
+      flex-basis: 20%;
+      justify-content: center; 
+    }
+  
+  
 }
+
+

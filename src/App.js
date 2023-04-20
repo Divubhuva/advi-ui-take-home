@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./Pages/Header";
 import ArticleList from "./Pages/ArticleList";
+import Footer from "./Pages/Footer";
+
 
 const App = () => {
   const apiKey = process.env.REACT_APP_API_KEY;
@@ -15,10 +17,14 @@ const App = () => {
   };
 
   return (
-    <div className="container">
-      <Router>
+    
+    <div className="newapp-container">
+      
+      {<Router>
+       
         <div>
-          <Header className="header" />
+        
+          <Header className="newapp-header" />
           <Routes>
             <Route path="/" element={<ArticleList url={getUrl("")} />} />
             <Route
@@ -50,10 +56,18 @@ const App = () => {
               element={<ArticleList url={getUrl("technology")} />}
             />
           </Routes>
+          <Footer className="newapp-footer" />
+          
+
+
         </div>
-      </Router>
+      </Router> }
     </div>
+  
+
   );
+
+  
 };
 
 export default App;

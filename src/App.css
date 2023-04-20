@@ -1,4 +1,4 @@
-.container {
+.news-app-container {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr auto;
@@ -9,22 +9,17 @@
   min-height: 100vh;
 }
 
-.header {
+.news-app-header {
   grid-area: header;
 }
 
-.article-list {
-  grid-area: article-list;
-  display: flex;
-  flex-wrap: wrap;
-}
 
-.footer {
+.news-app-footer {
   grid-area: footer;
 }
 
 @media (max-width: 768px) {
-  .container {
+  .news-app-container {
     grid-template-areas:
       "header"
       "filter"
