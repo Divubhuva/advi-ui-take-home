@@ -19,12 +19,17 @@ const Popup = ({ article, onClose }) => {
           </div>
           <div className="article-text-container">
             <h1 className="article-title">{article.title}</h1>
-            <p className="popup-article-published-at">
+
+            <p className="article-published-at">
+              Published at: { new Date(article.publishedAt).toUTCString()}
+            </p>
+
+            {/* <p className="popup-article-published-at">
               Published at:{" "}
               {new Date(article.publishedAt).toLocaleString("en-US", {
                 timeZone: "America/New_York",
               })}
-            </p>
+            </p> */}
 
             <p className="popup-article-author">Author: {article.author}</p>
             <p className="popup-article-source">

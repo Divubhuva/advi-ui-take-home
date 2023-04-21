@@ -3,17 +3,17 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./Filter.css";
 
-const Filter = ({handleFilterByDate}) => {
+const Filter = ({handleFilterByDate , handleFilterByPopularity}) => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedPopularity, setSelectedPopularity] = useState("");
 
   const handleDateChange = (date) => {
-    
     handleFilterByDate(date);
     setSelectedDate(date);
   };
 
   const handlePopularityChange = (event) => {
+    handleFilterByPopularity(event.target.value);
     setSelectedPopularity(event.target.value);
   };
 
@@ -38,14 +38,15 @@ const Filter = ({handleFilterByDate}) => {
           className="popularity-filter-options form-control"
         >
           <option value="">Select</option>
-          <option value="high">High</option>
-          <option value="medium">Medium</option>
-          <option value="low">Low</option>
+          <option value="MarketWatch">MarketWatch</option>
+          <option value="USA Today">USA Today</option>
+          <option value="The Washington Post">The Washington Post</option>
+          <option value="Google News">Google News</option>
         </select>
       </div>
       
       <div className="col-md-12 reset-filter">
-        <button onClick={() => handleDateChange(null)} className="button">Reset</button>
+        <button onClick={() => {handleDateChange(null); handleFilterByPopularity(null);} } className="button">Reset</button>
       </div>
     
     </div>

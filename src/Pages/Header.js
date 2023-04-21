@@ -1,27 +1,61 @@
-import React from "react";
+import React, {useState,useEffect} from "react";
 import "./Header.css";
 import Logo from "../Components/Logo";
 import Category from "../Components/Category";
 import SearchBar from "../Components/SearchBar";
 
-const onSearch = (searchTerm) => {
-  console.log("Searching for:", searchTerm);
-};
 
-const Header = () => {
+
+const Header = ({SearchForText}) => {
+  const [isMobileView, setIsMobileView] = useState(false);
+
+
+  const onSearch = (searchTerm) => {
+    SearchForText(searchTerm);
+   
+  };
+
+  useEffect(() => {
+    function handleResize() {
+      setIsMobileView(window.innerWidth < 768);
+    }
+
+    window.addEventListener('resize', handleResize);
+    handleResize();
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
-    <header className="header container">
+    <header className="header">
+      
       <div className="header-left">
         <Logo />
       </div>
 
-      <div className="header-center d-flex justify-content-center">
+
+      {!isMobileView ?
+      (<div className="header-right-container">
+      <div className="header-center">
         <Category />
       </div>
 
       <div className="header-right">
         <SearchBar onSearch={onSearch} />
       </div>
+      </div>
+      ):(
+      <div className="header-right-container">
+       
+        <div className="header-right">
+          <SearchBar onSearch={onSearch} />
+        </div>
+        <div className="header-center">
+           <Category />
+        </div>
+      </div>
+      )}
+    
     </header>
   );
 };
