@@ -6,8 +6,10 @@ import ArticleList from "./Pages/ArticleList";
 import Footer from "./Pages/Footer";
 
 
+
 const App = () => {
   const apiKey = process.env.REACT_APP_API_KEY;
+ 
 
   const getUrl = (category) => {
     if (category) {
@@ -18,13 +20,13 @@ const App = () => {
 
   return (
     
-    <div className="newapp-container">
+    <div className="news-app-container">
       
       {<Router>
        
         <div>
         
-          <Header className="newapp-header" />
+          <Header className="news-app-header" />
           <Routes>
             <Route path="/" element={<ArticleList url={getUrl("")} />} />
             <Route
@@ -56,7 +58,7 @@ const App = () => {
               element={<ArticleList url={getUrl("technology")} />}
             />
           </Routes>
-          <Footer className="newapp-footer" />
+          <Footer className="news-app-footer" />
           
 
 

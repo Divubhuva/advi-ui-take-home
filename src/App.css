@@ -23,6 +23,7 @@
     grid-template-areas:
       "header"
       "filter"
-      "article-list";
+      "article-list"
+      "footer";
   }
 }

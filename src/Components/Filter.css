@@ -4,7 +4,6 @@
   justify-content: space-between;
   width: 200px;
   margin-right: 20px;
-  
 }
 
 .date-filter {
@@ -32,7 +31,7 @@
   font-size: 14px;
 }
 
-.popularity-filter-options:focus{
+.popularity-filter-options:focus {
   box-shadow: 0 0 0 2px #aeaeae;
   border-color: #ced4da;
 }
@@ -65,42 +64,52 @@
   }
 
   .date-filter {
-    flex-basis: 40%; 
+    flex-basis: 40%;
     margin-bottom: 10px;
     padding: 5px;
-
   }
   .popularity-filter {
-     flex-basis: 35%; 
+    flex-basis: 35%;
     margin-bottom: 10px;
     padding: 5px;
   }
   .reset-filter {
     margin-top: 25px;
-    flex-basis: 10%; 
+    flex-basis: 10%;
     padding: 5px;
   }
-} 
+}
+
+@media (min-width: 768px) and (max-width: 1111px) {
+  .filter-container {
+    width: 100%;
+  }
+
+  .date-filter {
+    flex-basis: 100%;
+    margin-bottom: 5px;
+  }
+  .popularity-filter {
+    flex-basis: 100%;
+    margin-bottom: 5px;
+  }
+  .reset-filter {
+    margin-top: 10px;
+    flex-basis: 100%;
+  }
+}
 
 @media (max-width: 360px) {
-  
   .date-filter {
-    flex-basis: 100%; 
+    flex-basis: 100%;
     margin-bottom: 10px;
-
   }
   .popularity-filter {
-     flex-basis: 100%; 
+    flex-basis: 100%;
     margin-bottom: 10px;
   }
   .reset-filter {
     margin-top: 25px;
-    flex-basis: 100%; 
+    flex-basis: 100%;
   }
-} 
-
-
-
-
-
-
+}
