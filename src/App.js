@@ -1,6 +1,5 @@
 import React,{useState} from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useParams } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./Pages/Header";
 import ArticleList from "./Pages/ArticleList";
@@ -11,7 +10,7 @@ import Footer from "./Pages/Footer";
 const App = () => {
   const apiKey = process.env.REACT_APP_API_KEY;
   const [searchTextInput, setSearchTextInput] = useState("");
-  const params = useParams(); 
+  
 
   const onSearch = (serachText) => {
     setSearchTextInput(serachText);
@@ -23,6 +22,13 @@ const App = () => {
     }
     return `https://newsapi.org/v2/top-headlines?country=us&pageSize=100&apiKey=${apiKey}`;
   };
+
+  const getSerachUrl = ()=>{
+      if (searchTextInput){
+        return `https://newsapi.org/v2/everything?q=${searchTextInput}&apiKey=${apiKey}`;
+      }
+      return `https://newsapi.org/v2/top-headlines?country=us&pageSize=100&apiKey=${apiKey}`;
+  }
 
   return (
     
@@ -62,10 +68,10 @@ const App = () => {
               element={<ArticleList url={getUrl("technology")}  />}
             />
 
-            {/* <Route 
-              path="/search/:searchTerm" 
-              element={<ArticleList url={`https://newsapi.org/v2/everything?q=${params.searchTerm}&apiKey=${apiKey}`} />} 
-            /> */}
+            <Route 
+              path="/search" 
+              element={<ArticleList url={getSerachUrl()} />} 
+            />
 
           </Routes>
           

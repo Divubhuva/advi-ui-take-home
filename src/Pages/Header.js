@@ -17,7 +17,7 @@ const Header = ({SearchForText}) => {
 
   useEffect(() => {
     function handleResize() {
-      setIsMobileView(window.innerWidth < 1137);
+      setIsMobileView(window.innerWidth < 768);
     }
 
     window.addEventListener('resize', handleResize);

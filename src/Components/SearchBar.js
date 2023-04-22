@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
-//import { useNavigate  } from "react-router-dom";
+import { useNavigate  } from "react-router-dom";
 import './SearchBar.css'; 
 
 const SearchBar = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [isMobile, setIsMobile] = useState(false);
 
-  //const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleSearch = () => {
     //event.preventDefault();
     onSearch(searchTerm);
-    //navigate(`/search/${searchTerm}`);
+    navigate(`/search`);
   };
 
   const handleInputChange = (event) => {
