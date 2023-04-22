@@ -38,3 +38,23 @@
     margin-top: 10px;
   }
 }
+
+@media (max-width: 1137px) {
+  .navbar-nav {
+    display: none;
+  }
+
+  .navbar-toggler {
+    display: block;
+  }
+
+  .navbar-collapse {
+    margin-top: 10px;
+  }
+
+  .navbar-toggler-icon {
+    background-color: #f8f9fa;
+    border: 2px solid #000;
+    border-radius: 5px;
+  }
+}

@@ -17,7 +17,7 @@ const Header = ({SearchForText}) => {
 
   useEffect(() => {
     function handleResize() {
-      setIsMobileView(window.innerWidth < 768);
+      setIsMobileView(window.innerWidth < 1137);
     }
 
     window.addEventListener('resize', handleResize);
@@ -35,25 +35,21 @@ const Header = ({SearchForText}) => {
 
 
       {!isMobileView ?
-      (<div className="header-right-container">
-      <div className="header-center">
-        <Category />
-      </div>
+      (
+      <><div className="header-center">
+            <Category />
 
-      <div className="header-right">
-        <SearchBar onSearch={onSearch} />
-      </div>
-      </div>
+          </div><div className="header-right">
+              <SearchBar onSearch={onSearch} />
+            </div></>
+      
       ):(
-      <div className="header-right-container">
-       
-        <div className="header-right">
-          <SearchBar onSearch={onSearch} />
-        </div>
-        <div className="header-center">
-           <Category />
-        </div>
-      </div>
+
+        <><div className="header-right">
+            <SearchBar onSearch={onSearch} />
+          </div><div className="header-center">
+              <Category />
+            </div></>
       )}
     
     </header>
