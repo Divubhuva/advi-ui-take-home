@@ -1,19 +1,13 @@
-.articleList-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-}
 
 h1 {
   font-size: 24px;
   font-weight: bold;
 }
 
-.article-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
+.errorMessage, .empty-articleList {
+  font-size: 20px;
 }
+
 
 .pagination {
   display: flex;
@@ -36,8 +30,24 @@ h1 {
   box-shadow: 0 0 0 4px #aeaeae;
 }
 
-@media (max-width: 768px) {
-  .article-grid {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+@media (max-width: 997px) {
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .col-md-3 {
+    width: 50%;
+  }
+
+}
+
+@media screen and (max-width: 420px) {
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .col-md-3 {
+    width: 100%;
   }
 }

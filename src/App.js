@@ -1,11 +1,12 @@
-import React,{useState} from "react";
+import React, {useState, lazy, Suspense} from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./Pages/Header";
-import ArticleList from "./Pages/ArticleList";
+// import ArticleList from "./Pages/ArticleList";
+import Loading from "./Components/Loading";
 import Footer from "./Pages/Footer";
 
-
+const ArticleList = lazy(() => import("./Pages/ArticleList"));
 
 const App = () => {
   const apiKey = process.env.REACT_APP_API_KEY;
@@ -15,6 +16,7 @@ const App = () => {
   const onSearch = (serachText) => {
     setSearchTextInput(serachText);
   };
+
 
   const getUrl = (category) => {
     if (category) {
@@ -37,6 +39,7 @@ const App = () => {
       {<Router>
         <div>
           <Header className="news-app-header" SearchForText={onSearch}/>
+          <Suspense fallback = {<div><Loading /></div>}>
           <Routes>
             <Route path="/" element={<ArticleList url={getUrl("")}  />} />
             <Route
@@ -74,7 +77,7 @@ const App = () => {
             />
 
           </Routes>
-          
+          </Suspense>
           <Footer className="news-app-footer" />
         </div>
       </Router> }

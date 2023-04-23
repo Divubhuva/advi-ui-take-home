@@ -3,6 +3,7 @@ import axios from "axios";
 import ArticleComponent from "../Components/Article";
 import "./ArticleList.css";
 import Filter from "../Components/Filter";
+import Loading from "../Components/Loading";
 
 const ArticleList = ({ url }) => {
   const [articles, setArticles] = useState(null);
@@ -151,20 +152,21 @@ const ArticleList = ({ url }) => {
         <div className="col-md-10">
           <h2>Articles</h2>
           
-          {loading && <div>Loading...</div>}
-          {error && <div>Error: {error.message}</div>}
-          
-          {articles && (
+          {loading && <div><Loading /></div>}
+          {error && <div className="errorMessage">Error: {error.message}</div>}
+          {!loading && !error && !currentArticles.length && <div className="empty-articleList">No articles found.</div>}
+
+          {!loading && !error && articles && (
             <div className="row">
               {currentArticles.map((article, index) => (
-  <div className="col-md-3">
+  <div className="col-md-3 ">
                   <ArticleComponent  key={index} article={article} />
   </div>
 ))}
             </div>
           )}
 
-          {articles && (
+          {!loading && !error && articles && (
             <nav>
               <ul className="pagination justify-content-center">
                 {Array.from(

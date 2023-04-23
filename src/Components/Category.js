@@ -1,58 +1,51 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link , useNavigate } from "react-router-dom";
 import "./Category.css";
 
 const Category = () => {
+  const [selectedOption, setSelectedOption] = useState("");
+  const navigate = useNavigate();
+
+  const options = [
+    { value: "business", label: "Business" },
+    { value: "entertainment", label: "Entertainment" },
+    { value: "general", label: "General" },
+    { value: "health", label: "Health" },
+    { value: "science", label: "Science" },
+    { value: "sports", label: "Sports" },
+    { value: "technology", label: "Technology" }
+  ];
+
+  const handleOptionChange = (event) => {
+    setSelectedOption(event.target.value);
+    navigate(`/${selectedOption}`);
+  };
+
   return (
     <nav className="navbar navbar-expand-md">
-      <button
+      <select
         className="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarCollapse"
-        aria-controls="navbarCollapse"
-        aria-expanded="false"
+        value={selectedOption}
+        onChange={handleOptionChange}
         aria-label="Toggle navigation"
       >
-        <span className="navbar-toggler-icon"></span>
-      </button>
+        <option value="">All Category</option>
+        {options.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </select>
+
       <div className="collapse navbar-collapse" id="navbarCollapse">
         <ul className="navbar-nav mx-auto justify-content-center">
-          <li className="nav-item">
-            <Link to="/business" className="nav-link">
-              Business
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/entertainment" className="nav-link">
-              Entertainment
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/general" className="nav-link">
-              General
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/health" className="nav-link">
-              Health
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/science" className="nav-link">
-              Science
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/sports" className="nav-link">
-              Sports
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/technology" className="nav-link">
-              Technology
-            </Link>
-          </li>
+          {options.map((option) => (
+            <li key={option.value} className="nav-item">
+              <Link to={`/${option.value}`} className="nav-link">
+                {option.label}
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
     </nav>
