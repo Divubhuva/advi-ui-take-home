@@ -17,19 +17,21 @@ const Popup = ({ article, onClose }) => {
               className="popup-article-image"
             />
           </div>
-          <div className="article-text-container">
-            <h1 className="article-title">{article.title}</h1>
-
-            <p className="article-published-at">
-              Published at: { new Date(article.publishedAt).toLocaleString(('en-US', { timeZone: 'America/Phoenix' }))}
+          <div className="popup-article-text-container">
+            <h1 className="popup-article-title">{article.title}</h1>
+            <p className="popup-article-published-at">
+              Published at:{" "}
+              {new Date(article.publishedAt).toLocaleString(
+                ("en-US", { timeZone: "America/Phoenix" })
+              )}
             </p>
-
             <p className="popup-article-author">Author: {article.author}</p>
             <p className="popup-article-source">
               Source: {article.source.name}
             </p>
-            <p className="popup-article-description">{article.description}</p>
-            <p className="popup-article-content">{article.content}</p>
+            <p className="popup-article-description">
+              Description: {article.description}
+            </p>
 
             <a
               href={article.url}
