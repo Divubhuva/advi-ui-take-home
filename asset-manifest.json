@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/advi-ui-take-home/static/css/main.de52058a.css",
-    "main.js": "/advi-ui-take-home/static/js/main.d68ff72d.js",
+    "main.js": "/advi-ui-take-home/static/js/main.94a142ed.js",
     "static/css/141.9441c702.chunk.css": "/advi-ui-take-home/static/css/141.9441c702.chunk.css",
-    "static/js/141.ec5bbca3.chunk.js": "/advi-ui-take-home/static/js/141.ec5bbca3.chunk.js",
+    "static/js/141.3b30258a.chunk.js": "/advi-ui-take-home/static/js/141.3b30258a.chunk.js",
     "static/js/787.2485fa9d.chunk.js": "/advi-ui-take-home/static/js/787.2485fa9d.chunk.js",
     "index.html": "/advi-ui-take-home/index.html",
     "main.de52058a.css.map": "/advi-ui-take-home/static/css/main.de52058a.css.map",
-    "main.d68ff72d.js.map": "/advi-ui-take-home/static/js/main.d68ff72d.js.map",
+    "main.94a142ed.js.map": "/advi-ui-take-home/static/js/main.94a142ed.js.map",
     "141.9441c702.chunk.css.map": "/advi-ui-take-home/static/css/141.9441c702.chunk.css.map",
-    "141.ec5bbca3.chunk.js.map": "/advi-ui-take-home/static/js/141.ec5bbca3.chunk.js.map",
+    "141.3b30258a.chunk.js.map": "/advi-ui-take-home/static/js/141.3b30258a.chunk.js.map",
     "787.2485fa9d.chunk.js.map": "/advi-ui-take-home/static/js/787.2485fa9d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.de52058a.css",
-    "static/js/main.d68ff72d.js"
+    "static/js/main.94a142ed.js"
   ]
 }
