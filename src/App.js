@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./Pages/Header";
 // import ArticleList from "./Pages/ArticleList";
 import Loading from "./Components/Loading";
+import ErrorNotFound from "./Components/ErrorPage";
 import Footer from "./Pages/Footer";
 
 const ArticleList = lazy(() => import("./Pages/ArticleList"));
@@ -12,6 +13,7 @@ const App = () => {
   const apiKey = process.env.REACT_APP_API_KEY;
   const [searchTextInput, setSearchTextInput] = useState("");
   
+ 
 
   const onSearch = (serachText) => {
     setSearchTextInput(serachText);
@@ -75,8 +77,9 @@ const App = () => {
               path="/search" 
               element={<ArticleList url={getSerachUrl()} />} 
             />
-
+           <Route path="*" element={<ErrorNotFound />} />
           </Routes>
+          
           </Suspense>
           <Footer className="news-app-footer" />
         </div>
