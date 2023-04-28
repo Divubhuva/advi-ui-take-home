@@ -1,13 +1,11 @@
-import React, {useState, lazy, Suspense} from "react";
+import React, {useState} from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./Pages/Header";
-// import ArticleList from "./Pages/ArticleList";
-import Loading from "./Components/Loading";
+import ArticleList from "./Pages/ArticleList";
 import ErrorNotFound from "./Components/ErrorPage";
 import Footer from "./Pages/Footer";
-
-const ArticleList = lazy(() => import("./Pages/ArticleList"));
+import './App.css'
 
 const App = () => {
   const apiKey = process.env.REACT_APP_API_KEY;
@@ -40,8 +38,7 @@ const App = () => {
       
       {<Router>
         <div>
-          <Header className="news-app-header" SearchForText={onSearch}/>
-          <Suspense fallback = {<div><Loading /></div>}>
+          <Header SearchForText={onSearch}/>
           <Routes>
             <Route path="/" element={<ArticleList url={getUrl("")}  />} />
             <Route
@@ -80,8 +77,7 @@ const App = () => {
            <Route path="*" element={<ErrorNotFound />} />
           </Routes>
           
-          </Suspense>
-          <Footer className="news-app-footer" />
+          <Footer  />
         </div>
       </Router> }
     </div>
