@@ -7,10 +7,10 @@ h1 {
   font-weight: bold;
 }
 
-.errorMessage, .empty-articleList {
+.errorMessage,
+.empty-articleList {
   font-size: 20px;
 }
-
 
 .pagination {
   display: flex;
@@ -20,7 +20,7 @@ h1 {
 
 .pagination .page-item .page-link {
   background-color: #cfcfd1;
-  color: black; 
+  color: black;
   padding: 10px;
   margin-right: 5px;
   border: none;
@@ -28,13 +28,12 @@ h1 {
 }
 
 .pagination .page-item.active .page-link:focus {
-  background-color: #454546; 
+  background-color: #454546;
   color: white;
   box-shadow: 0 0 0 4px #aeaeae;
 }
 
 @media (max-width: 997px) {
-
   .row {
     display: flex;
     flex-wrap: wrap;
@@ -42,7 +41,6 @@ h1 {
   .col-md-3 {
     width: 50%;
   }
-
 }
 
 @media screen and (max-width: 420px) {

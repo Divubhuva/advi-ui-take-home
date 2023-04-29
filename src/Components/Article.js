@@ -11,7 +11,6 @@ const ArticleComponent = ({ article }) => {
 
   return (
     <div className="article-container card" onClick={handlePopupToggle}>
-      
       {article.urlToImage && (
         <div className="article-image-container">
           <img
@@ -28,7 +27,6 @@ const ArticleComponent = ({ article }) => {
       </div>
 
       {showPopup && <Popup article={article} onClose={handlePopupToggle} />}
-    
     </div>
   );
 };

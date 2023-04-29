@@ -1,16 +1,16 @@
-  .spinner-border {
-    width: 60px;
-    height: 60px;
-    color: #444;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    animation: spinner-border 0.75s linear infinite;
+.spinner-border {
+  width: 60px;
+  height: 60px;
+  color: #444;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  animation: spinner-border 0.75s linear infinite;
+}
+
+@keyframes spinner-border {
+  to {
+    transform: rotate(360deg);
   }
-  
-  @keyframes spinner-border {
-    to {
-      transform: rotate(360deg);
-    }
-  }
+}

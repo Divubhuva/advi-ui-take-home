@@ -1,11 +1,11 @@
-import React from 'react';
-import './Loading.css'
+import React from "react";
+import "./Loading.css";
 
 const Loading = () => {
   return (
-      <div className="spinner-border " role="status">
-        <span className="sr-only" />
-      </div>
+    <div className="spinner-border " role="status">
+      <span className="sr-only" />
+    </div>
   );
 };
 

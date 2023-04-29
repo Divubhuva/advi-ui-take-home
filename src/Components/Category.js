@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link , useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Category.css";
 
 const Category = () => {
@@ -13,7 +13,7 @@ const Category = () => {
     { value: "health", label: "Health" },
     { value: "science", label: "Science" },
     { value: "sports", label: "Sports" },
-    { value: "technology", label: "Technology" }
+    { value: "technology", label: "Technology" },
   ];
 
   const handleOptionChange = (event) => {

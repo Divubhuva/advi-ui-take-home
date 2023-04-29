@@ -16,7 +16,6 @@
 .navbar-toggler-icon {
   background-color: #f8f9fa;
   border-radius: 5px;
-  
 }
 
 option {
@@ -24,7 +23,6 @@ option {
   color: #333;
   padding: 5px;
   font-size: 15px;
-  
 }
 
 .navbar-nav {
@@ -52,7 +50,6 @@ option {
 @media (max-width: 1137px) {
   .navbar-nav {
     display: flex;
-
   }
 
   .navbar-toggler {
@@ -62,10 +59,4 @@ option {
   .navbar-collapse {
     margin-top: 10px;
   }
-
-  /* .navbar-toggler-icon {
-    background-color: #f8f9fa;
-    border: 2px solid #000;
-    border-radius: 5px;
-  } */
 }

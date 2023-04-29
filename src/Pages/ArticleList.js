@@ -15,7 +15,6 @@ const ArticleList = ({ url }) => {
   const [currentDate, setCurrentDate] = useState(null);
   const [currentPopularity, setCurrentPopularity] = useState("");
 
-
   const articlesPerPage = 12;
 
   const indexOfLastArticle = currentPage * articlesPerPage;
@@ -30,22 +29,18 @@ const ArticleList = ({ url }) => {
     setCurrentPage(pageNumber);
   };
 
-
-
-  const applyFilter = ()=>{
-   
+  const applyFilter = () => {
     if (articles && articles.length > 0) {
-      
       if (currentDate && currentPopularity) {
-        
         const filteredList = articles.filter((article) => {
           const articleDate = new Date(article.publishedAt);
           const filterDate = new Date(currentDate);
           return (
             articleDate.getDate() === filterDate.getDate() &&
             articleDate.getMonth() === filterDate.getMonth() &&
-            articleDate.getFullYear() === filterDate.getFullYear() && 
-            article.source.name.toLowerCase() === currentPopularity.toLowerCase()
+            articleDate.getFullYear() === filterDate.getFullYear() &&
+            article.source.name.toLowerCase() ===
+              currentPopularity.toLowerCase()
           );
         });
 
@@ -53,15 +48,10 @@ const ArticleList = ({ url }) => {
           setFilteredArticles(filteredList);
           setCurrentPage(1);
         }
-      }
-      else if (currentDate) {
-        
+      } else if (currentDate) {
         const filteredList = articles.filter((article) => {
           const articleDate = new Date(article.publishedAt);
           const filterDate = new Date(currentDate);
-
-
-          
 
           return (
             articleDate.getDate() === filterDate.getDate() &&
@@ -69,31 +59,29 @@ const ArticleList = ({ url }) => {
             articleDate.getFullYear() === filterDate.getFullYear()
           );
         });
-        
+
         if (JSON.stringify(filteredArticles) !== JSON.stringify(filteredList)) {
           setFilteredArticles(filteredList);
           setCurrentPage(1);
         }
-      } 
-      else if (currentPopularity){
-        
+      } else if (currentPopularity) {
         const filteredList = articles.filter((article) => {
-          return article.source.name.toLowerCase() === currentPopularity.toLowerCase();
+          return (
+            article.source.name.toLowerCase() ===
+            currentPopularity.toLowerCase()
+          );
         });
 
         if (JSON.stringify(filteredArticles) !== JSON.stringify(filteredList)) {
           setFilteredArticles(filteredList);
           setCurrentPage(1);
         }
-      }
-      else {
-        
+      } else {
         setFilteredArticles(articles);
       }
     }
   };
 
-  
   const handleFilterByDate = (date) => {
     setCurrentDate(date);
   };
@@ -101,7 +89,6 @@ const ArticleList = ({ url }) => {
   const handleFilterByPopularity = (popularSource) => {
     setCurrentPopularity(popularSource);
   };
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -120,49 +107,41 @@ const ArticleList = ({ url }) => {
     fetchData();
   }, [url]);
 
-
   useEffect(() => {
     applyFilter();
-  }, [ articles, currentDate, currentPopularity]);  
-
-  // If filter is applied then it should update here.
-  // useEffect(() => {
-  //   if (articles && filteredArticles && filteredArticles.length > 0) {
-  //     handleFilterByDate(filteredArticles[0].publishedAt);
-  //   }
-  // }, [articles]);
-
-    
-  // useEffect(() => {
-  //   console.log("text Serach for ", serachForText);
-  // }, [serachForText]);
-
+  }, [articles, currentDate, currentPopularity]);
 
   return (
     <div className="container-fluid ">
       <div className="row">
-        
         <div className="col-md-2">
           <h1>Filter</h1>
-          <Filter handleFilterByDate={handleFilterByDate}  
-          handleFilterByPopularity= {handleFilterByPopularity}
+          <Filter
+            handleFilterByDate={handleFilterByDate}
+            handleFilterByPopularity={handleFilterByPopularity}
           />
         </div>
-        
+
         <div className="col-md-10">
           <h2>Articles</h2>
-          
-          {loading && <div><Loading /></div>}
+
+          {loading && (
+            <div>
+              <Loading />
+            </div>
+          )}
           {error && <div className="errorMessage">Error: {error.message}</div>}
-          {!loading && !error && !currentArticles.length && <div className="empty-articleList">No articles found.</div>}
+          {!loading && !error && !currentArticles.length && (
+            <div className="empty-articleList">No articles found.</div>
+          )}
 
           {!loading && !error && articles && (
             <div className="row">
               {currentArticles.map((article, index) => (
-  <div className="col-md-3 ">
-                  <ArticleComponent  key={index} article={article} />
-  </div>
-))}
+                <div className="col-md-3 ">
+                  <ArticleComponent key={index} article={article} />
+                </div>
+              ))}
             </div>
           )}
 
@@ -184,22 +163,18 @@ const ArticleList = ({ url }) => {
                       (pageNumber === currentPage ? "active" : "")
                     }
                   >
-
                     <button
                       onClick={() => handlePageChange(pageNumber)}
                       className="page-link"
                     >
                       {pageNumber}
                     </button>
-
                   </li>
-
                 ))}
               </ul>
             </nav>
           )}
         </div>
-
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { useNavigate  } from "react-router-dom";
-import './SearchBar.css'; 
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./SearchBar.css";
 
 const SearchBar = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -9,7 +9,6 @@ const SearchBar = ({ onSearch }) => {
   const navigate = useNavigate();
 
   const handleSearch = () => {
-    //event.preventDefault();
     onSearch(searchTerm);
     navigate(`/search`);
   };
@@ -23,7 +22,9 @@ const SearchBar = ({ onSearch }) => {
   };
 
   return (
-    <div className={isMobile ? "article-search-bar-mobile" : "article-search-bar"}>
+    <div
+      className={isMobile ? "article-search-bar-mobile" : "article-search-bar"}
+    >
       <input
         type="text"
         placeholder="Search Here..."
@@ -54,9 +55,9 @@ const SearchBar = ({ onSearch }) => {
         </svg>
       </button>
       {isMobile && (
-      <button onClick={handleToggle} className="toggle-button">
-        <span className="toggle-icon"></span>
-      </button>
+        <button onClick={handleToggle} className="toggle-button">
+          <span className="toggle-icon"></span>
+        </button>
       )}
     </div>
   );
